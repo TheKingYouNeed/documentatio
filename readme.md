@@ -33,41 +33,6 @@ We created a **sensor-agnostic smart actuator** that uses **Microsoft's MiniLM**
 
 ---
 
-## 🧠 **What We Compare Against: Prototype Phrases**
-
-Our system compares incoming messages against **18 hardcoded prototype phrases** stored in the C code:
-
-### **📍 Location**: `/pfio-actuatorapp/.pio/libdeps/native/servient-c/src/ml/CoMatcher.c` (lines 22-45)
-
-### **✅ Positive Prototypes (10 phrases)**
-```c
-"turn on light"      // Direct command
-"increase brightness" // Intensity command  
-"activate actuator"  // Generic activation
-"execute actuation"  // Formal command
-"actuation order"    // System command
-"actuate"           // Simple verb
-"activate"          // Simple verb
-"turn on"           // Basic command
-"command present"    // Status indicator
-"set level"         // Parameter command
-```
-
-### **❌ Negative Prototypes (8 phrases)**
-```c
-"no order"          // Explicit rejection
-"NoOrder"           // Capitalized variant
-"noorder"           // Concatenated variant
-"do nothing"        // Explicit inaction
-"no command"        // Command absence
-"keep state"        // Maintain status
-"false"             // Boolean negative
-"idle"              // Inactive state
-```
-
-**How It Works**: Incoming text is converted to a 384-dimensional embedding and compared via cosine similarity against all 18 prototype embeddings. The highest positive and negative similarities determine the final decision.
-
----
 
 ## 🔄 **System Architecture Overview**
 
@@ -326,6 +291,42 @@ if (!onnx_available) {
     printf("Using hash-based embedding fallback\n");
 }
 ```
+
+---
+
+## 🧠 **What We Compare Against: Prototype Phrases**
+
+Our system compares incoming messages against **18 hardcoded prototype phrases** stored in the C code:
+
+### **📍 Location**: `/pfio-actuatorapp/.pio/libdeps/native/servient-c/src/ml/CoMatcher.c` (lines 22-45)
+
+### **✅ Positive Prototypes (10 phrases)**
+```c
+"turn on light"      // Direct command
+"increase brightness" // Intensity command  
+"activate actuator"  // Generic activation
+"execute actuation"  // Formal command
+"actuation order"    // System command
+"actuate"           // Simple verb
+"activate"          // Simple verb
+"turn on"           // Basic command
+"command present"    // Status indicator
+"set level"         // Parameter command
+```
+
+### **❌ Negative Prototypes (8 phrases)**
+```c
+"no order"          // Explicit rejection
+"NoOrder"           // Capitalized variant
+"noorder"           // Concatenated variant
+"do nothing"        // Explicit inaction
+"no command"        // Command absence
+"keep state"        // Maintain status
+"false"             // Boolean negative
+"idle"              // Inactive state
+```
+
+**How It Works**: Incoming text is converted to a 384-dimensional embedding and compared via cosine similarity against all 18 prototype embeddings. The highest positive and negative similarities determine the final decision.
 
 ---
 
