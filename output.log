@@ -1,0 +1,303 @@
+================================================================================
+🎯 DETAILED MATCHING RESULTS - SOSA vs SAREF RDF Blocks
+================================================================================
+
+================================================================================
+MATCH #1 - Overall Score: 0.791
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.770, model: 0.773
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (114, 121))
+================================================================================
+  "cosdataset:actuator_device_1" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_1" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_1" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_1" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_1" "sosa:madeByActuator" "cosdataset:actuator_device_1"
+  "cosdataset:actuation_event_1" "sosa:hasResult" "@;"
+
+SAREF PAYLOAD (Lines (20, 29))
+================================================================================
+  "cosdataset:actuator_device_1" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_1" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_1" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_1" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_1" "saref:madeBy" "cosdataset:actuator_device_1"
+  "cosdataset:actuation_event_1" "saref:hasResult" "cosdataset:actuation_event_1_Result"
+  "cosdataset:actuation_event_1_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_1_Result" "saref:hasValue" "@;"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #2 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (188, 195))
+================================================================================
+  "cosdataset:actuator_device_2" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_2" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_2" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_2" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_2" "sosa:madeByActuator" "cosdataset:actuator_device_2"
+  "cosdataset:actuation_event_2" "sosa:hasResult" "I׎R5V"
+
+SAREF PAYLOAD (Lines (50, 59))
+================================================================================
+  "cosdataset:actuator_device_2" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_2" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_2" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_2" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_2" "saref:madeBy" "cosdataset:actuator_device_2"
+  "cosdataset:actuation_event_2" "saref:hasResult" "cosdataset:actuation_event_2_Result"
+  "cosdataset:actuation_event_2_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_2_Result" "saref:hasValue" "I׎R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #3 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (262, 269))
+================================================================================
+  "cosdataset:actuator_device_3" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_3" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_3" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_3" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_3" "sosa:madeByActuator" "cosdataset:actuator_device_3"
+  "cosdataset:actuation_event_3" "sosa:hasResult" "R5V"
+
+SAREF PAYLOAD (Lines (80, 89))
+================================================================================
+  "cosdataset:actuator_device_3" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_3" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_3" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_3" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_3" "saref:madeBy" "cosdataset:actuator_device_3"
+  "cosdataset:actuation_event_3" "saref:hasResult" "cosdataset:actuation_event_3_Result"
+  "cosdataset:actuation_event_3_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_3_Result" "saref:hasValue" "���R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #4 - Overall Score: 0.787
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.756, model: 0.769
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (337, 344))
+================================================================================
+  "cosdataset:actuator_device_4" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_4" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_4" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_4" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_4" "sosa:madeByActuator" "cosdataset:actuator_device_4"
+  "cosdataset:actuation_event_4" "sosa:hasResult" "JR5V"
+
+SAREF PAYLOAD (Lines (110, 119))
+================================================================================
+  "cosdataset:actuator_device_4" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_4" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_4" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_4" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_4" "saref:madeBy" "cosdataset:actuator_device_4"
+  "cosdataset:actuation_event_4" "saref:hasResult" "cosdataset:actuation_event_4_Result"
+  "cosdataset:actuation_event_4_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_4_Result" "saref:hasValue" "J�R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #5 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (411, 418))
+================================================================================
+  "cosdataset:actuator_device_5" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_5" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_5" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_5" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_5" "sosa:madeByActuator" "cosdataset:actuator_device_5"
+  "cosdataset:actuation_event_5" "sosa:hasResult" "x]R5V"
+
+SAREF PAYLOAD (Lines (140, 149))
+================================================================================
+  "cosdataset:actuator_device_5" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_5" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_5" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_5" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_5" "saref:madeBy" "cosdataset:actuator_device_5"
+  "cosdataset:actuation_event_5" "saref:hasResult" "cosdataset:actuation_event_5_Result"
+  "cosdataset:actuation_event_5_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_5_Result" "saref:hasValue" "x]�R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #6 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (485, 492))
+================================================================================
+  "cosdataset:actuator_device_6" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_6" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_6" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_6" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_6" "sosa:madeByActuator" "cosdataset:actuator_device_6"
+  "cosdataset:actuation_event_6" "sosa:hasResult" "?R5V"
+
+SAREF PAYLOAD (Lines (170, 179))
+================================================================================
+  "cosdataset:actuator_device_6" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_6" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_6" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_6" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_6" "saref:madeBy" "cosdataset:actuator_device_6"
+  "cosdataset:actuation_event_6" "saref:hasResult" "cosdataset:actuation_event_6_Result"
+  "cosdataset:actuation_event_6_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_6_Result" "saref:hasValue" "?�R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #7 - Overall Score: 0.793
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.774, model: 0.775
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (560, 567))
+================================================================================
+  "cosdataset:actuator_device_7" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_7" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_7" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_7" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_7" "sosa:madeByActuator" "cosdataset:actuator_device_7"
+  "cosdataset:actuation_event_7" "sosa:hasResult" "חR5V"
+
+SAREF PAYLOAD (Lines (200, 209))
+================================================================================
+  "cosdataset:actuator_device_7" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_7" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_7" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_7" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_7" "saref:madeBy" "cosdataset:actuator_device_7"
+  "cosdataset:actuation_event_7" "saref:hasResult" "cosdataset:actuation_event_7_Result"
+  "cosdataset:actuation_event_7_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_7_Result" "saref:hasValue" "חR5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #8 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (634, 641))
+================================================================================
+  "cosdataset:actuator_device_8" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_8" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_8" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_8" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_8" "sosa:madeByActuator" "cosdataset:actuator_device_8"
+  "cosdataset:actuation_event_8" "sosa:hasResult" "R5V"
+
+SAREF PAYLOAD (Lines (230, 239))
+================================================================================
+  "cosdataset:actuator_device_8" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_8" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_8" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_8" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_8" "saref:madeBy" "cosdataset:actuator_device_8"
+  "cosdataset:actuation_event_8" "saref:hasResult" "cosdataset:actuation_event_8_Result"
+  "cosdataset:actuation_event_8_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_8_Result" "saref:hasValue" "��R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #9 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (708, 715))
+================================================================================
+  "cosdataset:actuator_device_9" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_9" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_9" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_9" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_9" "sosa:madeByActuator" "cosdataset:actuator_device_9"
+  "cosdataset:actuation_event_9" "sosa:hasResult" "R5V"
+
+SAREF PAYLOAD (Lines (260, 269))
+================================================================================
+  "cosdataset:actuator_device_9" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_9" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_9" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_9" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_9" "saref:madeBy" "cosdataset:actuator_device_9"
+  "cosdataset:actuation_event_9" "saref:hasResult" "cosdataset:actuation_event_9_Result"
+  "cosdataset:actuation_event_9_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_9_Result" "saref:hasValue" "���R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+
+
+================================================================================
+MATCH #10 - Overall Score: 0.792
+Detailed scores: cosine: 0.953, structural: 0.597, tfidf: 0.771, model: 0.774
+--------------------------------------------------------------------------------
+SOSA PAYLOAD (Lines (783, 790))
+================================================================================
+  "cosdataset:actuator_device_10" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_10" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_10" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_10" "@type" "sosa:Actuation"
+  "cosdataset:actuation_event_10" "sosa:madeByActuator" "cosdataset:actuator_device_10"
+  "cosdataset:actuation_event_10" "sosa:hasResult" "R5V"
+
+SAREF PAYLOAD (Lines (290, 299))
+================================================================================
+  "cosdataset:actuator_device_10" "@type" "coswot:Actuator"
+  "cosdataset:actuator_device_10" "coswot:hasState" "coswot:Activated"
+  "cosdataset:actuator_device_10" "coswot:executesActuation" "true"
+  "cosdataset:actuation_event_10" "@type" "saref:Actuation"
+  "cosdataset:actuation_event_10" "saref:madeBy" "cosdataset:actuator_device_10"
+  "cosdataset:actuation_event_10" "saref:hasResult" "cosdataset:actuation_event_10_Result"
+  "cosdataset:actuation_event_10_Result" "@type" "saref:PropertyValue"
+  "cosdataset:actuation_event_10_Result" "saref:hasValue" "��R5V"
+
+COMPARISON SUMMARY:
+--------------------------------------------------------------------------------
+SOSA - Total triples: 6, Entities: 2, Predicates: 5
+SAREF - Total triples: 8, Entities: 3, Predicates: 6
+

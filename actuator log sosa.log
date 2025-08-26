@@ -1,0 +1,795 @@
+Initialization of modules...
+CoSSB initialized.
+Module initialized.
+ONNX MiniLM initialized successfully (CPU-only)
+CoMatcher initialized. mode=1 tlow=0.60 thigh=0.75 margin=0.05 backend=onnx_minilm
+CoAR initialized.
+CoSIO initialized.
+Templating initialized.
+CoSCOM_buffer's address: 0x5630281a97b0
+CoSCOM initialized (client-only).
+CoRTC initialized.
+Topic n°0:	type: 5, size: 10, buffer: 69 66 72 6F 6D 5F 63 6F 72 65 
+Size of the callbacklist: 1
+Topic n°1:	type: 5, size: 10, buffer: 69 66 72 6F 6D 5F 63 6F 61 72 
+Size of the callbacklist: 1
+Topic n°2:	type: 5, size: 10, buffer: 69 66 72 6F 6D 5F 6E 6F 6E 65 
+Size of the callbacklist: 1
+Topic n°3:	type: 5, size: 19, buffer: 72 69 6E 69 74 47 72 61 70 68 46 6F 72 43 6F 53 43 4F 4D 
+Size of the callbacklist: 1
+Size of the topic list: 4
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+Aug 25 23:53:15.060  1 WARN ** 127.0.0.1:46928 <-> 127.0.0.1:5683 UDP : coap_socket_recv: ICMP: Connection refused
+WARNING: COULD NOT FIND KEY 8 IN GRAPHWARNING: COULD NOT FIND KEY 8 IN GRAPHWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHResult coap_io_process 0
+Message sent to CoSSB.
+[
+,
+
+]
+
+----------------------
+CoSSB is publishing the message...
+----------------------
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+Result coap_io_process 969
+Message sent to CoSSB.
+[
+,
+
+]
+
+----------------------
+CoSSB is publishing the message...
+----------------------
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A00010405181A07D90140821500086966726F6D5F636F72651832634E2F4109C11A68ACF76DFFFFA1019FBF00D901408215000110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_0" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_0" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_0" "coswot:conveys" "cosdataset:4ET_429_CoRE_0"
+    "cosdataset:4ET_429_CoRE_COMID_0" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_0" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_0" "coswot:hasTimestamp" 2025-08-25T23:53:17Z
+,
+    "cosdataset:4ET_429_CoRE_0" "@type" "coswot:Evaluation"
+    "cosdataset:e4_S421_LUMI" "50" "{{504}}"
+    "cosdataset:4ET_429_CoSA_0" "{{503}}" 25.000000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: @;.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_0".
+Payload created with ID: "cosdataset:4ET_429_CoAR_0".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_0" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_0" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_0" "coswot:conveys" "cosdataset:4ET_429_CoAR_0"
+    "cosdataset:4ET_429_CoAR_COMID_0" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_0" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_0" "coswot:hasTimestamp" 2025-08-25T23:53:18Z
+,
+    "cosdataset:4ET_429_CoAR_0" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_0" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_0" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_0" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_0" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_0" "sosa:hasSimpleResult" "@;"
+    "cosdataset:4ET_429_CoAR_0" "sosa:resultTime" 2025-08-25T23:53:18Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_1" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_1" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_1" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_1" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_1" "sosa:madeByActuator" "cosdataset:actuator_device_1"
+    "cosdataset:actuation_event_1" "sosa:hasResult" "@;"
+]
+Actuator device 1 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A01010405181A07D90140821501086966726F6D5F636F72651832634E2F4109C11A68ACF76EFFFFA1019FBF00D901408215010110FF...
+Result coap_io_process 1241
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_1" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_1" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_1" "coswot:conveys" "cosdataset:4ET_429_CoRE_1"
+    "cosdataset:4ET_429_CoRE_COMID_1" "coswot:isAboWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHut" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_1" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_1" "coswot:hasTimestamp" 2025-08-25T23:53:18Z
+,
+    "cosdataset:4ET_429_CoRE_1" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_1" "{{503}}" 27.100000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: I׎R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_1".
+Payload created with ID: "cosdataset:4ET_429_CoAR_1".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_1" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_1" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_1" "coswot:conveys" "cosdataset:4ET_429_CoAR_1"
+    "cosdataset:4ET_429_CoAR_COMID_1" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_1" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_1" "coswot:hasTimestamp" 2025-08-25T23:53:20Z
+,
+    "cosdataset:4ET_429_CoAR_1" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_1" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_1" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_1" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_1" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_1" "sosa:hasSimpleResult" "(binary:49D78E523556)"
+    "cosdataset:4ET_429_CoAR_1" "sosa:resultTime" 2025-08-25T23:53:20Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_2" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_2" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_2" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_2" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_2" "sosa:madeByActuator" "cosdataset:actuator_device_2"
+    "cosdataset:actuation_event_2" "sosa:hasResult" "I׎R5V"
+]
+Actuator device 2 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A02010405181A07D90140821502086966726F6D5F636F72651832634E2F4109C11A68ACF770FFFFA1019FBF00D901408215020110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_2" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_2" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_2" "coswot:conveys" "cosdataset:4ET_429_CoRE_2"
+    "cosdataset:4ET_429_CoRE_COMID_2" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_2" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_2" "coswot:hasTimestamp" 2025-08-25T23:53:20Z
+,
+    "cosdataset:4ET_429_CoRE_2" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_2" "{{503}}" 45.900002
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: ���R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_2".
+Payload created with ID: "cosdataset:4ET_429_CoAR_2".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_2" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_2" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_2" "coswot:conveys" "coWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHsdataset:4ET_429_CoAR_2"
+    "cosdataset:4ET_429_CoAR_COMID_2" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_2" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_2" "coswot:hasTimestamp" 2025-08-25T23:53:21Z
+,
+    "cosdataset:4ET_429_CoAR_2" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_2" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_2" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_2" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_2" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_2" "sosa:hasSimpleResult" "(binary:90B997523556)"
+    "cosdataset:4ET_429_CoAR_2" "sosa:resultTime" 2025-08-25T23:53:21Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_3" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_3" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_3" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_3" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_3" "sosa:madeByActuator" "cosdataset:actuator_device_3"
+    "cosdataset:actuation_event_3" "sosa:hasResult" "���R5V"
+]
+Actuator device 3 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A03010405181A07D90140821503086966726F6D5F636F72651832634E2F4109C11A68ACF771FFFFA1019FBF00D901408215030110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_3" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_3" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_3" "coswot:conveys" "cosdataset:4ET_429_CoRE_3"
+    "cosdataset:4ET_429_CoRE_COMID_3" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_3" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_3" "coswot:hasTimestamp" 2025-08-25T23:53:21Z
+,
+    "cosdataset:4ET_429_CoRE_3" "@type" "coswot:Evaluation"
+    "cosdataset:e4_S425_LUMI" "50" "{{504}}"
+    "cosdataset:4ET_429_CoSA_3" "{{503}}" 30.000000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: J�R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_3".
+Payload created with ID: "cosdataset:4ET_429_CoAR_3".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_3" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_3" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_3" "coswot:conveys" "cosdataset:4ET_429_CoAR_3"
+    "cosdataset:4ET_429_CoAR_COMID_3" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_3" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_3" "coswot:hasTimestamp" 2025-08-25T23:53:22Z
+,
+    "cosdataset:4ET_429_CoAR_3" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_3" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_3" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_3" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_3" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_3" "sosa:hasSimpleResult" "(binary:4AEEA6523556)"
+    "cosdataset:4ET_429_CoAR_3" "sosa:resultTime" 2025-08-25T23:53:22Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_4" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_4" "coswot:hasState" "coswot:AcWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHtivated"
+    "cosdataset:actuator_device_4" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_4" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_4" "sosa:madeByActuator" "cosdataset:actuator_device_4"
+    "cosdataset:actuation_event_4" "sosa:hasResult" "J�R5V"
+]
+Actuator device 4 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A04010405181A07D90140821504086966726F6D5F636F72651832634E2F4109C11A68ACF772FFFFA1019FBF00D901408215040110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_4" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_4" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_4" "coswot:conveys" "cosdataset:4ET_429_CoRE_4"
+    "cosdataset:4ET_429_CoRE_COMID_4" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_4" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_4" "coswot:hasTimestamp" 2025-08-25T23:53:22Z
+,
+    "cosdataset:4ET_429_CoRE_4" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_4" "{{503}}" 28.799999
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: x]�R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_4".
+Payload created with ID: "cosdataset:4ET_429_CoAR_4".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_4" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_4" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_4" "coswot:conveys" "cosdataset:4ET_429_CoAR_4"
+    "cosdataset:4ET_429_CoAR_COMID_4" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_4" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_4" "coswot:hasTimestamp" 2025-08-25T23:53:23Z
+,
+    "cosdataset:4ET_429_CoAR_4" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_4" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_4" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_4" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_4" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_4" "sosa:hasSimpleResult" "(binary:785D95523556)"
+    "cosdataset:4ET_429_CoAR_4" "sosa:resultTime" 2025-08-25T23:53:23Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_5" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_5" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_5" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_5" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_5" "sosa:madeByActuator" "cosdataset:actuator_device_5"
+    "cosdataset:actuation_event_5" "sosa:hasResult" "x]�R5V"
+]
+Actuator device 5 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A05010405181A07D90140821505086966726F6D5F636F72651832634E2F4109C11A68ACF773FFFFA1019FBF00D901408215050110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_5" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_5" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_5" "coswot:conveys" "cosdataset:4ET_429_CoRE_5"
+    "cosdataset:4ET_429_CoRE_COMID_5" "coswot:isAbout" "from_core"
+    "cosdatWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHaset:4ET_429_CoRE_COMID_5" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_5" "coswot:hasTimestamp" 2025-08-25T23:53:23Z
+,
+    "cosdataset:4ET_429_CoRE_5" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_5" "{{503}}" 53.400002
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: ?�R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_5".
+Payload created with ID: "cosdataset:4ET_429_CoAR_5".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_5" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_5" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_5" "coswot:conveys" "cosdataset:4ET_429_CoAR_5"
+    "cosdataset:4ET_429_CoAR_COMID_5" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_5" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_5" "coswot:hasTimestamp" 2025-08-25T23:53:24Z
+,
+    "cosdataset:4ET_429_CoAR_5" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_5" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_5" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_5" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_5" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_5" "sosa:hasSimpleResult" "(binary:3F1C93523556)"
+    "cosdataset:4ET_429_CoAR_5" "sosa:resultTime" 2025-08-25T23:53:24Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_6" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_6" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_6" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_6" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_6" "sosa:madeByActuator" "cosdataset:actuator_device_6"
+    "cosdataset:actuation_event_6" "sosa:hasResult" "?�R5V"
+]
+Actuator device 6 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A06010405181A07D90140821506086966726F6D5F636F72651832634E2F4109C11A68ACF774FFFFA1019FBF00D901408215060110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_6" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_6" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_6" "coswot:conveys" "cosdataset:4ET_429_CoRE_6"
+    "cosdataset:4ET_429_CoRE_COMID_6" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_6" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_6" "coswot:hasTimestamp" 2025-08-25T23:53:24Z
+,
+    "cosdataset:4ET_429_CoRE_6" "@type" "coswot:Evaluation"
+    "cosdataset:e4_Hall4Nord_LUMI" "50" "{{504}}"
+    "cosdataset:4ET_429_CoSA_6" "{{503}}" 2.000000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: חR5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_6".
+Payload created with ID: "cosdataset:4ET_429_CoAR_6".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_6" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_6" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_6WARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPH" "coswot:conveys" "cosdataset:4ET_429_CoAR_6"
+    "cosdataset:4ET_429_CoAR_COMID_6" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_6" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_6" "coswot:hasTimestamp" 2025-08-25T23:53:25Z
+,
+    "cosdataset:4ET_429_CoAR_6" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_6" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_6" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_6" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_6" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_6" "sosa:hasSimpleResult" "(binary:1CD797523556)"
+    "cosdataset:4ET_429_CoAR_6" "sosa:resultTime" 2025-08-25T23:53:25Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_7" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_7" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_7" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_7" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_7" "sosa:madeByActuator" "cosdataset:actuator_device_7"
+    "cosdataset:actuation_event_7" "sosa:hasResult" "חR5V"
+]
+Actuator device 7 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A07010405181A07D90140821507086966726F6D5F636F72651832634E2F4109C11A68ACF775FFFFA1019FBF00D901408215070110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_7" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_7" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_7" "coswot:conveys" "cosdataset:4ET_429_CoRE_7"
+    "cosdataset:4ET_429_CoRE_COMID_7" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_7" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_7" "coswot:hasTimestamp" 2025-08-25T23:53:25Z
+,
+    "cosdataset:4ET_429_CoRE_7" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_7" "{{503}}" 29.000000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: ��R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_7".
+Payload created with ID: "cosdataset:4ET_429_CoAR_7".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_7" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_7" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_7" "coswot:conveys" "cosdataset:4ET_429_CoAR_7"
+    "cosdataset:4ET_429_CoAR_COMID_7" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_7" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_7" "coswot:hasTimestamp" 2025-08-25T23:53:26Z
+,
+    "cosdataset:4ET_429_CoAR_7" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_7" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_7" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_7" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_7" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_7" "sosa:hasSimpleResult" "(binary:D61D93523556)"
+    "cosdataset:4ET_429_CoAR_7" "sosa:resultTime" 2025-08-25T23:53:26Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_8" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_8" "coswot:hasState" "coswot:Activated"
+    "cosdataseWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHt:actuator_device_8" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_8" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_8" "sosa:madeByActuator" "cosdataset:actuator_device_8"
+    "cosdataset:actuation_event_8" "sosa:hasResult" "��R5V"
+]
+Actuator device 8 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A08010405181A07D90140821508086966726F6D5F636F72651832634E2F4109C11A68ACF776FFFFA1019FBF00D901408215080110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_8" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_8" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_8" "coswot:conveys" "cosdataset:4ET_429_CoRE_8"
+    "cosdataset:4ET_429_CoRE_COMID_8" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMID_8" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_8" "coswot:hasTimestamp" 2025-08-25T23:53:26Z
+,
+    "cosdataset:4ET_429_CoRE_8" "@type" "coswot:Evaluation"
+    "cosdataset:4ET_429_CoSA_8" "{{503}}" 54.400002
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: ���R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_8".
+Payload created with ID: "cosdataset:4ET_429_CoAR_8".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_8" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_8" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_8" "coswot:conveys" "cosdataset:4ET_429_CoAR_8"
+    "cosdataset:4ET_429_CoAR_COMID_8" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_8" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_8" "coswot:hasTimestamp" 2025-08-25T23:53:27Z
+,
+    "cosdataset:4ET_429_CoAR_8" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_8" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_8" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_8" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_8" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_8" "sosa:hasSimpleResult" "(binary:B3B18B523556)"
+    "cosdataset:4ET_429_CoAR_8" "sosa:resultTime" 2025-08-25T23:53:27Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_9" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_9" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_9" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_9" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_9" "sosa:madeByActuator" "cosdataset:actuator_device_9"
+    "cosdataset:actuation_event_9" "sosa:hasResult" "���R5V"
+]
+Actuator device 9 activated and executed actuation.
+----------------------
+
+
+----------------------
+CoSCOM check if coap-client received a message.
+----------------------
+CoAP client, response_handler: 
+CoAP client: Received data
+Data len 562 buf hex: A1019FBF00D9014082181A09010405181A07D90140821509086966726F6D5F636F72651832634E2F4109C11A68ACF777FFFFA1019FBF00D901408215090110FF...
+Result coap_io_process 0
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoRE_COMID_9" "@type" "coswot:Communication"
+    "cosdataset:4ET_429_CoRE_COMID_9" "coswot:hasMedium" "cosdataset:4ET_429_CoRE_COMID"
+    "cosdataset:4ET_429_CoRE_COMID_9" "coswot:conveys" "cosdataset:4ET_429_CoRE_9"
+    "cosdataset:4ET_429_CoRE_COMID_9" "coswot:isAbout" "from_core"
+    "cosdataset:4ET_429_CoRE_COMIDWARNING: COULD NOT FIND KEY 10 IN GRAPHWARNING: COULD NOT FIND KEY 11 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPHWARNING: COULD NOT FIND KEY 12 IN GRAPH_9" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoRE_COMID_9" "coswot:hasTimestamp" 2025-08-25T23:53:27Z
+,
+    "cosdataset:4ET_429_CoRE_9" "@type" "coswot:Evaluation"
+    "cosdataset:e4_S431H_LUMI" "50" "{{504}}"
+    "cosdataset:4ET_429_CoSA_9" "{{503}}" 6.000000
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_core.
+----------------------
+
+----------------------
+CoAR received a message.
+----------------------
+Metric: @id of index 0
+Retrieved result from reasoning graph: @id (0).
+Application runtime result: ��R5V.
+MINILM_SIM mode=1 legacy_ok=1 ml_ok=0 sim=0.41 margin=-0.59 top1=4 top2=10
+MINILM_SIM DISAGREE: using legacy decision.
+Headers created with ID: "cosdataset:4ET_429_CoAR_COMID_9".
+Payload created with ID: "cosdataset:4ET_429_CoAR_9".
+Message sent to CoSSB.
+[
+    "cosdataset:4ET_429_CoAR_COMID_9" "@type" "coswot:hasTimestamp"
+    "cosdataset:4ET_429_CoAR_COMID_9" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+    "cosdataset:4ET_429_CoAR_COMID_9" "coswot:conveys" "cosdataset:4ET_429_CoAR_9"
+    "cosdataset:4ET_429_CoAR_COMID_9" "coswot:isAbout" "from_coar"
+    "cosdataset:4ET_429_CoAR_COMID_9" "coswot:replaces" "N/A"
+    "cosdataset:4ET_429_CoAR_COMID_9" "coswot:hasTimestamp" 2025-08-25T23:53:28Z
+,
+    "cosdataset:4ET_429_CoAR_9" "@type" "coswot:PlannedActuation"
+    "cosdataset:4ET_429_CoAR_9" "coswot:evaluates" "@id"
+    "cosdataset:4ET_429_CoAR_9" "sosa:hasFeatureOfInterest" "@id"
+    "cosdataset:4ET_429_CoAR_9" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+    "cosdataset:4ET_429_CoAR_9" "sosa:hasInput" "@id"
+    "cosdataset:4ET_429_CoAR_9" "sosa:hasSimpleResult" "(binary:91EB97523556)"
+    "cosdataset:4ET_429_CoAR_9" "sosa:resultTime" 2025-08-25T23:53:28Z
+
+]
+
+----------------------
+CoSSB is publishing the message...
+CoSSB - Topic found: from_coar.
+----------------------
+
+----------------------
+CoSIO received a message.
+[
+    "cosdataset:actuator_device_10" "@type" "coswot:Actuator"
+    "cosdataset:actuator_device_10" "coswot:hasState" "coswot:Activated"
+    "cosdataset:actuator_device_10" "coswot:executesActuation" "true"
+    "cosdataset:actuation_event_10" "@type" "sosa:Actuation"
+    "cosdataset:actuation_event_10" "sosa:madeByActuator" "cosdataset:actuator_device_10"
+    "cosdataset:actuation_event_10" "sosa:hasResult" "��R5V"
+]
+Actuator device 10 activated and executed actuation.
+----------------------
+
+Delete Module
+Delete CoSCOM

@@ -1,0 +1,299 @@
+[
+"cosdataset:4ET_429_CoAR_COMID_0" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_0" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_0" "coswot:conveys" "cosdataset:4ET_429_CoAR_0"
+"cosdataset:4ET_429_CoAR_COMID_0" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_0" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_0" "coswot:hasTimestamp" 2025-08-25T23:53:18Z
+,
+"cosdataset:4ET_429_CoAR_0" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_0" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_0" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_0" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_0" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_0" "saref:hasResult" "cosdataset:4ET_429_CoAR_0_Result"
+"cosdataset:4ET_429_CoAR_0" "saref:hasResultTime" 2025-08-25T23:53:18Z
+"cosdataset:4ET_429_CoAR_0_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_0_Result" "saref:hasValue" "@;"
+]
+
+[
+"cosdataset:actuator_device_1" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_1" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_1" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_1" "@type" "saref:Actuation"
+"cosdataset:actuation_event_1" "saref:madeBy" "cosdataset:actuator_device_1"
+"cosdataset:actuation_event_1" "saref:hasResult" "cosdataset:actuation_event_1_Result"
+"cosdataset:actuation_event_1_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_1_Result" "saref:hasValue" "@;"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_1" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_1" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_1" "coswot:conveys" "cosdataset:4ET_429_CoAR_1"
+"cosdataset:4ET_429_CoAR_COMID_1" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_1" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_1" "coswot:hasTimestamp" 2025-08-25T23:53:20Z
+,
+"cosdataset:4ET_429_CoAR_1" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_1" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_1" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_1" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_1" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_1" "saref:hasResult" "cosdataset:4ET_429_CoAR_1_Result"
+"cosdataset:4ET_429_CoAR_1" "saref:hasResultTime" 2025-08-25T23:53:20Z
+"cosdataset:4ET_429_CoAR_1_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_1_Result" "saref:hasValue" "(binary:49D78E523556)"
+]
+
+[
+"cosdataset:actuator_device_2" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_2" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_2" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_2" "@type" "saref:Actuation"
+"cosdataset:actuation_event_2" "saref:madeBy" "cosdataset:actuator_device_2"
+"cosdataset:actuation_event_2" "saref:hasResult" "cosdataset:actuation_event_2_Result"
+"cosdataset:actuation_event_2_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_2_Result" "saref:hasValue" "I׎R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_2" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_2" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_2" "coswot:conveys" "cosdataset:4ET_429_CoAR_2"
+"cosdataset:4ET_429_CoAR_COMID_2" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_2" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_2" "coswot:hasTimestamp" 2025-08-25T23:53:21Z
+,
+"cosdataset:4ET_429_CoAR_2" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_2" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_2" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_2" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_2" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_2" "saref:hasResult" "cosdataset:4ET_429_CoAR_2_Result"
+"cosdataset:4ET_429_CoAR_2" "saref:hasResultTime" 2025-08-25T23:53:21Z
+"cosdataset:4ET_429_CoAR_2_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_2_Result" "saref:hasValue" "(binary:90B997523556)"
+]
+
+[
+"cosdataset:actuator_device_3" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_3" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_3" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_3" "@type" "saref:Actuation"
+"cosdataset:actuation_event_3" "saref:madeBy" "cosdataset:actuator_device_3"
+"cosdataset:actuation_event_3" "saref:hasResult" "cosdataset:actuation_event_3_Result"
+"cosdataset:actuation_event_3_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_3_Result" "saref:hasValue" "���R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_3" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_3" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_3" "coswot:conveys" "cosdataset:4ET_429_CoAR_3"
+"cosdataset:4ET_429_CoAR_COMID_3" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_3" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_3" "coswot:hasTimestamp" 2025-08-25T23:53:22Z
+,
+"cosdataset:4ET_429_CoAR_3" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_3" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_3" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_3" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_3" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_3" "saref:hasResult" "cosdataset:4ET_429_CoAR_3_Result"
+"cosdataset:4ET_429_CoAR_3" "saref:hasResultTime" 2025-08-25T23:53:22Z
+"cosdataset:4ET_429_CoAR_3_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_3_Result" "saref:hasValue" "(binary:4AEEA6523556)"
+]
+
+[
+"cosdataset:actuator_device_4" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_4" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_4" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_4" "@type" "saref:Actuation"
+"cosdataset:actuation_event_4" "saref:madeBy" "cosdataset:actuator_device_4"
+"cosdataset:actuation_event_4" "saref:hasResult" "cosdataset:actuation_event_4_Result"
+"cosdataset:actuation_event_4_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_4_Result" "saref:hasValue" "J�R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_4" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_4" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_4" "coswot:conveys" "cosdataset:4ET_429_CoAR_4"
+"cosdataset:4ET_429_CoAR_COMID_4" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_4" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_4" "coswot:hasTimestamp" 2025-08-25T23:53:23Z
+,
+"cosdataset:4ET_429_CoAR_4" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_4" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_4" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_4" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_4" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_4" "saref:hasResult" "cosdataset:4ET_429_CoAR_4_Result"
+"cosdataset:4ET_429_CoAR_4" "saref:hasResultTime" 2025-08-25T23:53:23Z
+"cosdataset:4ET_429_CoAR_4_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_4_Result" "saref:hasValue" "(binary:785D95523556)"
+]
+
+[
+"cosdataset:actuator_device_5" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_5" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_5" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_5" "@type" "saref:Actuation"
+"cosdataset:actuation_event_5" "saref:madeBy" "cosdataset:actuator_device_5"
+"cosdataset:actuation_event_5" "saref:hasResult" "cosdataset:actuation_event_5_Result"
+"cosdataset:actuation_event_5_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_5_Result" "saref:hasValue" "x]�R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_5" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_5" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_5" "coswot:conveys" "cosdataset:4ET_429_CoAR_5"
+"cosdataset:4ET_429_CoAR_COMID_5" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_5" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_5" "coswot:hasTimestamp" 2025-08-25T23:53:24Z
+,
+"cosdataset:4ET_429_CoAR_5" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_5" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_5" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_5" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_5" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_5" "saref:hasResult" "cosdataset:4ET_429_CoAR_5_Result"
+"cosdataset:4ET_429_CoAR_5" "saref:hasResultTime" 2025-08-25T23:53:24Z
+"cosdataset:4ET_429_CoAR_5_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_5_Result" "saref:hasValue" "(binary:3F1C93523556)"
+]
+
+[
+"cosdataset:actuator_device_6" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_6" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_6" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_6" "@type" "saref:Actuation"
+"cosdataset:actuation_event_6" "saref:madeBy" "cosdataset:actuator_device_6"
+"cosdataset:actuation_event_6" "saref:hasResult" "cosdataset:actuation_event_6_Result"
+"cosdataset:actuation_event_6_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_6_Result" "saref:hasValue" "?�R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_6" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_6" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_6" "coswot:conveys" "cosdataset:4ET_429_CoAR_6"
+"cosdataset:4ET_429_CoAR_COMID_6" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_6" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_6" "coswot:hasTimestamp" 2025-08-25T23:53:25Z
+,
+"cosdataset:4ET_429_CoAR_6" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_6" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_6" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_6" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_6" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_6" "saref:hasResult" "cosdataset:4ET_429_CoAR_6_Result"
+"cosdataset:4ET_429_CoAR_6" "saref:hasResultTime" 2025-08-25T23:53:25Z
+"cosdataset:4ET_429_CoAR_6_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_6_Result" "saref:hasValue" "(binary:1CD797523556)"
+]
+
+[
+"cosdataset:actuator_device_7" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_7" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_7" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_7" "@type" "saref:Actuation"
+"cosdataset:actuation_event_7" "saref:madeBy" "cosdataset:actuator_device_7"
+"cosdataset:actuation_event_7" "saref:hasResult" "cosdataset:actuation_event_7_Result"
+"cosdataset:actuation_event_7_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_7_Result" "saref:hasValue" "חR5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_7" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_7" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_7" "coswot:conveys" "cosdataset:4ET_429_CoAR_7"
+"cosdataset:4ET_429_CoAR_COMID_7" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_7" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_7" "coswot:hasTimestamp" 2025-08-25T23:53:26Z
+,
+"cosdataset:4ET_429_CoAR_7" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_7" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_7" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_7" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_7" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_7" "saref:hasResult" "cosdataset:4ET_429_CoAR_7_Result"
+"cosdataset:4ET_429_CoAR_7" "saref:hasResultTime" 2025-08-25T23:53:26Z
+"cosdataset:4ET_429_CoAR_7_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_7_Result" "saref:hasValue" "(binary:D61D93523556)"
+]
+
+[
+"cosdataset:actuator_device_8" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_8" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_8" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_8" "@type" "saref:Actuation"
+"cosdataset:actuation_event_8" "saref:madeBy" "cosdataset:actuator_device_8"
+"cosdataset:actuation_event_8" "saref:hasResult" "cosdataset:actuation_event_8_Result"
+"cosdataset:actuation_event_8_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_8_Result" "saref:hasValue" "��R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_8" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_8" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_8" "coswot:conveys" "cosdataset:4ET_429_CoAR_8"
+"cosdataset:4ET_429_CoAR_COMID_8" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_8" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_8" "coswot:hasTimestamp" 2025-08-25T23:53:27Z
+,
+"cosdataset:4ET_429_CoAR_8" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_8" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_8" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_8" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_8" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_8" "saref:hasResult" "cosdataset:4ET_429_CoAR_8_Result"
+"cosdataset:4ET_429_CoAR_8" "saref:hasResultTime" 2025-08-25T23:53:27Z
+"cosdataset:4ET_429_CoAR_8_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_8_Result" "saref:hasValue" "(binary:B3B18B523556)"
+]
+
+[
+"cosdataset:actuator_device_9" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_9" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_9" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_9" "@type" "saref:Actuation"
+"cosdataset:actuation_event_9" "saref:madeBy" "cosdataset:actuator_device_9"
+"cosdataset:actuation_event_9" "saref:hasResult" "cosdataset:actuation_event_9_Result"
+"cosdataset:actuation_event_9_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_9_Result" "saref:hasValue" "���R5V"
+]
+
+[
+"cosdataset:4ET_429_CoAR_COMID_9" "@type" "coswot:hasTimestamp"
+"cosdataset:4ET_429_CoAR_COMID_9" "coswot:hasMedium" "cosdataset:4ET_429_CoAR_COMID"
+"cosdataset:4ET_429_CoAR_COMID_9" "coswot:conveys" "cosdataset:4ET_429_CoAR_9"
+"cosdataset:4ET_429_CoAR_COMID_9" "coswot:isAbout" "from_coar"
+"cosdataset:4ET_429_CoAR_COMID_9" "coswot:replaces" "N/A"
+"cosdataset:4ET_429_CoAR_COMID_9" "coswot:hasTimestamp" 2025-08-25T23:53:28Z
+,
+"cosdataset:4ET_429_CoAR_9" "@type" "coswot:PlannedActuation"
+"cosdataset:4ET_429_CoAR_9" "coswot:evaluates" "@id"
+"cosdataset:4ET_429_CoAR_9" "saref:controls" "@id"
+"cosdataset:4ET_429_CoAR_9" "coswot:madeBy" "cosdataset:4ET_429_CoAR"
+"cosdataset:4ET_429_CoAR_9" "saref:hasInput" "@id"
+"cosdataset:4ET_429_CoAR_9" "saref:hasResult" "cosdataset:4ET_429_CoAR_9_Result"
+"cosdataset:4ET_429_CoAR_9" "saref:hasResultTime" 2025-08-25T23:53:28Z
+"cosdataset:4ET_429_CoAR_9_Result" "@type" "saref:PropertyValue"
+"cosdataset:4ET_429_CoAR_9_Result" "saref:hasValue" "(binary:91EB97523556)"
+]
+
+[
+"cosdataset:actuator_device_10" "@type" "coswot:Actuator"
+"cosdataset:actuator_device_10" "coswot:hasState" "coswot:Activated"
+"cosdataset:actuator_device_10" "coswot:executesActuation" "true"
+"cosdataset:actuation_event_10" "@type" "saref:Actuation"
+"cosdataset:actuation_event_10" "saref:madeBy" "cosdataset:actuator_device_10"
+"cosdataset:actuation_event_10" "saref:hasResult" "cosdataset:actuation_event_10_Result"
+"cosdataset:actuation_event_10_Result" "@type" "saref:PropertyValue"
+"cosdataset:actuation_event_10_Result" "saref:hasValue" "��R5V"
+]
