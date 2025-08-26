@@ -4,50 +4,7 @@
 
 The ML Gateway is a comprehensive machine learning system designed to automatically find correspondences between SOSA (Sensor, Observation, Sample, and Actuator) and SAREF (Smart Applications REFerence) ontology payloads in IoT actuator applications. The system uses multiple ML algorithms to identify semantically equivalent RDF blocks across different ontological representations.
 
-## System Architecture
 
-### Core Components
-
-The system consists of four main modules:
-
-#### 1. **PayloadExtractor** (`ml_payload_matcher.py`)
-- **Purpose**: Parses log files to extract structured RDF payload blocks
-- **Key Methods**:
-  - `extract_rdf_blocks()`: Identifies RDF triple blocks in log files
-  - `extract_actuator_payloads()`: Filters for actuator-specific payloads
-  - `parse_rdf_line()`: Converts log lines to structured RDF triples
-
-**Algorithm**: Uses regex patterns to identify RDF triple boundaries and extracts metadata including:
-- Line ranges in source files
-- Entity counts and types
-- Predicate relationships
-- Temporal information
-
-#### 2. **FeatureExtractor** (`ml_payload_matcher.py`)
-- **Purpose**: Converts RDF blocks into numerical feature vectors for ML processing
-- **Feature Types**:
-  - **Textual Features**: TF-IDF vectorization of RDF content
-  - **Structural Features**: Entity/predicate counts, graph topology
-  - **Semantic Features**: Ontology-specific term analysis
-  - **Model Features**: Trained RandomForest predictions (when available)
-
-**Algorithm**: Creates multi-dimensional feature vectors combining:
-```
-Feature Vector = [TF-IDF(384), Structural(6), Semantic(12)]
-Total Dimensions: 402
-```
-
-#### 3. **SimilarityMatcher** (`ml_payload_matcher.py`)
-- **Purpose**: Computes similarity scores between SOSA and SAREF payloads
-- **Scoring Algorithm**:
-  ```
-  With Model:     Overall Score = 0.30 × Cosine + 0.20 × Structural + 0.20 × TF-IDF + 0.30 × Model
-  Without Model:  Overall Score = 0.40 × Cosine + 0.30 × Structural + 0.30 × TF-IDF
-  ```
-- **Key Methods**:
-  - `find_correspondences()`: Main matching algorithm
-  - `compute_similarity()`: Multi-metric similarity computation
-  - `validate_matches()`: Quality assessment and confidence scoring
 
 **Algorithm Details**:
 1. **Cosine Similarity**: Computes angular similarity between feature vectors
@@ -80,17 +37,12 @@ Total Dimensions: 402
    - Line-by-line correspondence visualization
    - Detailed scoring breakdown
 
-2. **Training Data**: `ontology_matching_results/training_data.pkl`
-   - Serialized match results for training
-   - Feature vectors and correspondence data
-   - Temporal metadata for versioning
-
-3. **Trained Models**: `ontology_matching_results/trained_model.pkl`
+2. **Trained Models**: `ontology_matching_results/trained_model.pkl`
    - Persistent Random Forest classifier
    - Model metadata and performance metrics
    - Training history and feedback counts
 
-4. **Feedback History**: `ontology_matching_results/feedback.json`
+3. **Feedback History**: `ontology_matching_results/feedback.json`
    - User corrections and validations
    - Training examples for supervised learning
    - Accuracy tracking over time
