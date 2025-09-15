@@ -6,7 +6,7 @@
 
 ## Overview
 **File**: `test11_overfitting_fix.py`  
-**F1-Score**: 66.0% (Precision: 49.7%, Recall: 98.2%)  
+**F1-Score**: 66.0% 
 **Key Achievement**: Solved critical overfitting problem, reducing validation/test gap from 22.5% to 3.9%  
 **Training Time**: 236.9 seconds (30 epochs)  
 **Prediction Confidence**: 67.9% (excellent model certainty)  
