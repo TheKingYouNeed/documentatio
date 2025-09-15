@@ -109,30 +109,6 @@ def _initialize_weights(self):
 - **Bias Terms**: Zero initialization
 - **Random Seed**: Controlled for reproducibility
 
-### Feature Engineering
-
-#### CNN Feature Extraction
-```python
-def extract_cnn_features(self, payload: bytes, training=False) -> List[float]:
-    """Extract CNN features with optional augmentation"""
-```
-
-**Feature Pipeline**:
-1. **Data Augmentation** (training only):
-   - Gaussian noise injection (σ = 0.03 × 255)
-   - Applied to 50% of training samples
-   - Maximum 8 bytes modified per payload
-2. **Byte Normalization**: [0-255] → [0.0-1.0]
-3. **Padding/Truncation**: Standardize to 128 bytes
-4. **CNN Pattern Detection**: 14+28 = 42 learned patterns
-5. **Statistical Features**: Min, max, mean, std per payload
-6. **Final Output**: 46 features per payload
-
-#### Pair Feature Combination
-- **Individual Features**: 46 features × 2 payloads = 92 base features
-- **Concatenation**: Direct feature stacking for neural network input
-- **No Manual Similarity Metrics**: Let network learn optimal combinations
-
 ### Regularization and Anti-Overfitting Measures
 
 #### L2 Regularization
