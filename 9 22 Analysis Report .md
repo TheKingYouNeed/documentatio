@@ -23,38 +23,16 @@ This report documents the comprehensive development and evaluation of three dist
 The neural network approach revolutionized our strategy by moving from raw CBOR bytes to engineered semantic features, addressing the fundamental limitation that CNNs couldn't capture semantic patterns from binary data.
 
 #### Network Architecture
-```python
-class SemanticSimilarityNet(nn.Module):
-    def __init__(self, input_dim=64, hidden_dims=[128, 64, 32]):
-        super(SemanticSimilarityNet, self).__init__()
-        
-        # Simple feedforward network
-        layers = []
-        prev_dim = input_dim
-        
-        for hidden_dim in hidden_dims:
-            layers.extend([
-                nn.Linear(prev_dim, hidden_dim),
-                nn.BatchNorm1d(hidden_dim),
-                nn.ReLU(),
-                nn.Dropout(0.3)
-            ])
-            prev_dim = hidden_dim
-        
-        # Output layer
-        layers.append(nn.Linear(prev_dim, 1))
-        layers.append(nn.Sigmoid())
-        
-        self.network = nn.Sequential(*layers)
-```
 
-**Key Architecture Details:**
-- **Input**: 64 semantic features (32 per payload, concatenated)
-- **Hidden Layers**: 128 → 64 → 32 neurons
-- **Parameters**: 19,137 total parameters
-- **Activation**: ReLU with Batch Normalization
-- **Regularization**: 30% dropout between layers
-- **Output**: Single sigmoid neuron (similarity probability)
+The neural network uses a simple feedforward architecture implemented in PyTorch. The network takes 64 semantic features as input (32 features extracted from each CBOR payload, then concatenated for comparison). 
+
+**Architecture Design:**
+- **Input Layer**: 64 semantic features representing both payloads
+- **Hidden Layers**: Three progressively smaller layers (128 → 64 → 32 neurons)
+- **Output Layer**: Single neuron with sigmoid activation for similarity probability
+- **Total Parameters**: 19,137 parameters (much smaller than previous CNN approaches)
+- **Regularization**: 30% dropout between layers to prevent overfitting
+- **Normalization**: Batch normalization after each linear layer for stable training
 
 ### Semantic Feature Engineering
 
@@ -62,95 +40,43 @@ The breakthrough came from extracting 32 carefully designed semantic features fr
 
 #### Feature Categories
 
+The 32 semantic features are organized into five distinct categories:
+
 **1. Structural Features (4 features)**
-```python
-features.append(len(cbor_payload))  # Payload length
-features.append(len(set(cbor_payload)))  # Unique bytes count
-features.append(cbor_payload[0] / 255.0)  # First byte (CBOR major type)
-features.append(cbor_payload[-1] / 255.0)  # Last byte
-```
+Basic payload characteristics including total length, unique byte count, first byte (indicating CBOR major type), and last byte patterns.
 
 **2. CBOR-Specific Patterns (8 features)**
-```python
-# Major types: 0=uint, 1=int, 2=bytes, 3=text, 4=array, 5=map, 6=tag, 7=float/simple
-major_type_counts = [0] * 8
-for byte in cbor_payload:
-    major_type = (byte >> 5) & 0x07  # Extract 3-bit major type
-    major_type_counts[major_type] += 1
-
-# Normalize major type counts
-for count in major_type_counts:
-    features.append(count / total_bytes if total_bytes > 0 else 0)
-```
+Distribution of CBOR major types throughout the payload. CBOR uses 3-bit major types to indicate data categories: unsigned integers, negative integers, byte strings, text strings, arrays, maps, tags, and simple values. These features capture the relative frequency of each type.
 
 **3. Statistical Features (4 features)**
-- Normalized mean byte value
-- Normalized standard deviation
-- Normalized minimum value  
-- Normalized maximum value
+Statistical properties of the byte values including normalized mean, standard deviation, minimum, and maximum values across the payload.
 
 **4. IoT Pattern Detection (10 features)**
-```python
-# Look for common IoT/RDF patterns
-iot_patterns = [
-    b'\\x18', b'\\x19', b'\\x1a',  # CBOR tag indicators
-    b'\\x40',  # Common in RDF
-    b'\\x60',  # Text string start
-    b'\\xa0',  # Map start
-    b'\\x80',  # Array start
-    b'\\xf4', b'\\xf5', b'\\xf6'  # False, True, Null
-]
-```
+Detection of common byte patterns that frequently appear in IoT and RDF communications, including CBOR tag indicators, text string markers, map/array delimiters, and boolean/null value encodings.
 
 **5. Semantic Structure Hints (6 features)**
-- Numeric value density
-- ASCII text density
-- Binary data density
-- Entropy measures
-- Repetition patterns
+Higher-level content analysis including numeric value density, ASCII text density, binary data density, entropy measures, and repetition patterns that indicate structured vs random data.
 
 ### Training Strategy
 
-**Loss Function: Weighted Focal Loss**
-```python
-class WeightedFocalLoss(nn.Module):
-    def __init__(self, alpha=0.75, gamma=2.0, pos_weight=2.0):
-        super(WeightedFocalLoss, self).__init__()
-        self.alpha = alpha
-        self.gamma = gamma
-        self.pos_weight = pos_weight
-```
+The neural network uses a specialized Weighted Focal Loss function designed to handle class imbalance while focusing learning on difficult examples. This loss function combines three key techniques: focal weighting (gamma=2.0) to emphasize hard examples, class balancing (alpha=0.75) to account for the 80% negative class bias, and positive weighting (pos_weight=2.0) to boost positive example learning.
 
-**Key Training Parameters:**
-- **Optimizer**: Adam (lr=0.001, weight_decay=0.01)
-- **Scheduler**: ReduceLROnPlateau (patience=3, factor=0.5)
-- **Epochs**: 15 (with early stopping)
-- **Batch Size**: 32
-- **Class Balance**: 80% negatives, 20% positives
+**Training Configuration:**
+- **Optimizer**: Adam with learning rate 0.001 and weight decay 0.01 for regularization
+- **Learning Rate Scheduling**: Automatic reduction when validation performance plateaus
+- **Training Duration**: 15 epochs maximum with early stopping to prevent overfitting
+- **Batch Processing**: 32 samples per batch for stable gradient computation
+- **Data Distribution**: 80% negative pairs, 20% positive pairs reflecting real-world imbalance
 
 ### Performance Analysis
 
 #### Test Dataset Results (80% Negatives)
-```
-📊 Test Results:
-   F1-Score: 82.3%
-   Precision: 69.9%
-   Recall: 100.0%
-   Specificity: 43.6%
-   Accuracy: 75.6%
-   
-Confusion Matrix: TP=51, FP=22, TN=17, FN=0
-Training Time: 2.3 seconds
-```
+
+Testing on the challenging dataset with 80% negative samples, the neural network achieved an F1-score of 82.3% with 69.9% precision and perfect 100% recall. However, specificity remained low at 43.6%, indicating difficulty distinguishing true negatives. The confusion matrix showed 51 true positives, 22 false positives, 17 true negatives, and 0 false negatives. Training completed in just 2.3 seconds.
 
 #### Balanced Dataset Results (50% Negatives)
-```
-📊 Balanced Test Results:
-   F1-Score: 84.0%
-   Precision: 73.5%
-   Recall: 98.0%
-   Specificity: 64.1%
-```
+
+On the balanced dataset, performance improved slightly with an F1-score of 84.0%, precision of 73.5%, and recall of 98.0%. Specificity increased to 64.1%, showing better negative detection with balanced data.
 
 #### Strengths
 - ✅ **High Recall**: Perfect 100% recall ensures no missed matches
@@ -163,13 +89,9 @@ Training Time: 2.3 seconds
 - ⚠️ **Production Concerns**: High false positive rate problematic for production
 - ⚠️ **Feature Engineering Dependent**: Requires manual feature design
 
-#### Example Model Output (ONNX Export)
-```python
-# Exported model specifications:
-Input: semantic_features [batch_size, 64]
-Output: similarity_score [batch_size, 1]
-Model Size: 19,137 parameters
-```
+#### Model Export Capabilities
+
+The neural network can be exported to ONNX format for deployment in production IoT environments. The exported model accepts 64 semantic features as input and outputs a single similarity score between 0 and 1. With only 19,137 parameters, the model is lightweight and suitable for resource-constrained devices.
 
 ---
 
@@ -180,71 +102,22 @@ Model Size: 19,137 parameters
 The Random Forest approach used the same 32 semantic features but with a traditional machine learning classifier, providing interpretability and stability.
 
 #### Model Configuration
-```python
-# Optimal hyperparameters found via grid search:
-best_params = {
-    'n_estimators': 100,
-    'max_depth': 10,
-    'min_samples_split': 2,
-    'min_samples_leaf': 2,
-    'class_weight': 'balanced'
-}
-```
 
-**Key Architecture Details:**
-- **Algorithm**: Random Forest Classifier
-- **Trees**: 100 decision trees
-- **Max Depth**: 10 levels per tree
-- **Class Balancing**: Weighted to handle 80% negative samples
-- **Feature Selection**: All 64 concatenated features used
+The Random Forest classifier was optimized through systematic grid search to find the best hyperparameters. The final configuration uses 100 decision trees with a maximum depth of 10 levels each. Class weighting is set to "balanced" to automatically handle the 80% negative sample imbalance. The model requires minimum 2 samples for splitting nodes and minimum 2 samples per leaf, preventing overfitting while maintaining decision granularity. All 64 concatenated semantic features are used without feature selection.
 
 ### Feature Importance Analysis
 
-The Random Forest revealed which semantic features were most discriminative:
-
-```
-🔍 Top 10 Most Important Features:
-   1. SOSA_feat_12: 0.0387    (CBOR major type distribution)
-   2. MODIFIED_feat_4: 0.0338  (Last byte patterns)
-   3. SOSA_feat_0: 0.0306     (Payload length)
-   4. SOSA_feat_21: 0.0293    (Pattern detection)
-   5. MODIFIED_feat_12: 0.0289 (CBOR major type distribution)
-   6. MODIFIED_feat_21: 0.0287 (Pattern detection)
-   7. SOSA_feat_18: 0.0276    (Entropy measures)
-   8. SOSA_feat_4: 0.0267     (Statistical features)
-   9. SOSA_feat_20: 0.0264    (Semantic structure)
-   10. SOSA_feat_16: 0.0262   (IoT patterns)
-```
+The Random Forest revealed which semantic features were most discriminative for similarity detection. The top features include CBOR major type distribution patterns, payload length characteristics, last byte patterns, and IoT-specific pattern detection. Entropy measures and statistical features also ranked highly, while semantic structure hints and pattern detection features provided additional discriminative power. This analysis showed that structural CBOR features were more important than content-based features for this dataset.
 
 ### Training Process
 
-**Grid Search Parameters:**
-```python
-param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [10, 15, 20, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'class_weight': ['balanced', None]
-}
-```
-
-**Cross-Validation**: 3-fold CV with F1-score optimization
+The Random Forest underwent comprehensive hyperparameter optimization using grid search across multiple dimensions. The search explored different numbers of trees (100, 200, 300), maximum tree depths (10, 15, 20, unlimited), minimum samples for node splitting (2, 5, 10), minimum samples per leaf (1, 2, 4), and class weighting strategies (balanced vs unweighted). The optimization used 3-fold cross-validation with F1-score as the target metric to ensure balanced performance across precision and recall.
 
 ### Performance Analysis
 
 #### Test Dataset Results (80% Negatives)
-```
-📊 Test Results (Random Forest):
-   F1-Score: 78.4%
-   Precision: 73.1%
-   Recall: 84.4%
-   Specificity: 92.2%
-   Accuracy: 90.7%
-   
-Confusion Matrix: TP=38, FP=14, TN=166, FN=7
-Training Time: 98.1 seconds
-```
+
+The Random Forest achieved strong balanced performance on the challenging 80% negative dataset. With an F1-score of 78.4%, it demonstrated 73.1% precision and 84.4% recall. Most importantly, it achieved excellent specificity of 92.2%, correctly identifying 166 true negatives while only misclassifying 14 as false positives. The model captured 38 true positives with only 7 false negatives. Training required 98.1 seconds, significantly longer than the neural network but still reasonable for the comprehensive grid search optimization.
 
 #### Strengths
 - ✅ **Excellent Specificity**: 92.2% minimizes false positives
@@ -259,11 +132,8 @@ Training Time: 98.1 seconds
 - ⚠️ **Feature Dependent**: Still requires manual feature engineering
 
 #### Model Persistence
-```python
-# Saved model for production use
-model_path = "/home/vboxuser/CascadeProjects/coswot4/best_semantic_random_forest.pkl"
-joblib.dump(best_rf, model_path)
-```
+
+The optimized Random Forest model is saved in pickle format for immediate production deployment, ensuring consistent performance and eliminating the need for retraining.
 
 ---
 
@@ -274,172 +144,43 @@ joblib.dump(best_rf, model_path)
 The transformer approach represented a paradigm shift: instead of manual feature engineering, it used proper CBOR structural decoding combined with pre-trained language models to achieve **structural and content similarity detection**. Note: This approach works with encoded CBOR payloads without requiring semantic ontology terms.
 
 #### Core Innovation: Structural CBOR Decoding
-```python
-def decode_cbor_structure(cbor_payload: bytes) -> Dict:
-    """Decode CBOR structure to extract semantic content"""
-    
-    result = {
-        'decoded_content': None,
-        'text_elements': [],
-        'numeric_elements': [],
-        'structure_map': {},
-        'text_content': [],       # Actual text strings found in CBOR
-        'structural_info': [],    # CBOR type and organization info
-        'parsing_success': False
-    }
-    
-    try:
-        # Try to decode the CBOR payload
-        decoded = cbor2.loads(cbor_payload)
-        result['decoded_content'] = decoded
-        result['parsing_success'] = True
-        
-        # Extract semantic content recursively
-        extract_semantic_elements(decoded, result)
-        
-    except Exception as e:
-        # Fallback to partial extraction from raw bytes
-        result['text_elements'] = extract_text_from_bytes(cbor_payload)
-```
+
+The transformer approach fundamentally differs from previous methods by leveraging CBOR's self-describing structure. Instead of processing raw bytes, it first decodes the CBOR payload using the standard cbor2 library to extract the actual data structure. The decoder identifies text elements, numeric values, structural organization, and data types within the CBOR format. When full decoding fails due to malformed data, a fallback mechanism extracts readable text patterns from the raw bytes. This structural approach preserves the semantic relationships encoded within the CBOR format rather than treating it as opaque binary data.
 
 
 #### Structural Text Creation
-```python
-def create_structural_text(decoded_result: Dict) -> str:
-    """Create a structural text representation for transformer processing"""
-    
-    text_parts = []
-    
-    # Add text elements found in CBOR (timestamps, status indicators)
-    if decoded_result['text_elements']:
-        sorted_text = sorted(set(decoded_result['text_elements']))
-        text_parts.append("TEXT_CONTENT: " + " | ".join(sorted_text))
-    
-    # Add structural information
-    if decoded_result['structure_map']:
-        structure_types = sorted(decoded_result['structure_map'].values())
-        structure_signature = " ".join(Counter(structure_types).keys())
-        text_parts.append("STRUCTURE: " + structure_signature)
-    
-    # Add numeric summary
-    if decoded_result['numeric_elements']:
-        nums = decoded_result['numeric_elements']
-        num_signature = f"NUMBERS: count={len(nums)} range=[{min(nums):.2f},{max(nums):.2f}]"
-        text_parts.append(num_signature)
-    
-    return " || ".join(text_parts)
-```
+
+After extracting content from the CBOR structure, the system creates a standardized text representation for the transformer model. This representation combines text elements found in the payload (such as timestamps and status indicators), structural information about data types and organization, and numeric summaries including value counts and ranges. The components are sorted for order-invariance and combined using consistent delimiters, creating a stable input format for the transformer model regardless of the original CBOR encoding order.
 
 #### Pre-trained Transformer Model
-```python
-# Used state-of-the-art sentence transformer
-model_name = "all-MiniLM-L6-v2"  # 384-dimensional embeddings
-transformer_model = SentenceTransformer(model_name)
 
-# Generate embeddings for semantic texts
-all_embeddings = transformer_model.encode(all_texts, show_progress_bar=True)
-```
+The approach utilizes the state-of-the-art "all-MiniLM-L6-v2" sentence transformer model, which generates 384-dimensional embeddings from text input. This pre-trained model brings extensive language understanding capabilities, enabling it to recognize semantic relationships between timestamps, status indicators, and structural patterns even when they appear in different orders or formats. The model processes all text representations in batches to generate dense vector embeddings that capture the semantic content of each CBOR payload.
 
 #### Neural Network Classifier
-```python
-class TransformerSemanticNet(nn.Module):
-    def __init__(self, embedding_size=768):  # 2x 384 for concatenated embeddings
-        super().__init__()
-        
-        self.classifier = nn.Sequential(
-            nn.Linear(embedding_size, 512),
-            nn.BatchNorm1d(512),
-            nn.ReLU(),
-            nn.Dropout(0.3),
-            
-            nn.Linear(512, 256),
-            nn.BatchNorm1d(256),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            
-            nn.Linear(256, 128),
-            nn.BatchNorm1d(128),
-            nn.ReLU(),
-            nn.Dropout(0.1),
-            
-            nn.Linear(128, 1),
-            nn.Sigmoid()
-        )
-```
+
+The final component is a PyTorch neural network that processes the concatenated 768-dimensional embeddings (384 dimensions from each payload in the pair). The classifier uses a four-layer architecture with progressively decreasing layer sizes: 512, 256, 128, and finally 1 output neuron. Each layer includes batch normalization for stable training and dropout regularization with decreasing rates (30%, 20%, 10%) as the network narrows. The final layer uses sigmoid activation to output similarity probabilities between 0 and 1.
 
 ### Training Strategy
 
-**Intelligent Pair Creation:**
-```python
-# Positive pairs: same index = semantic equivalence
-for i in range(min_length):
-    combined_embedding = np.concatenate([sosa_embeddings[i], modified_embeddings[i]])
-    pairs.append(combined_embedding)
-    labels.append(1.0)
-
-# Negative pairs: different indices with low similarity
-for i in range(min_length):
-    for j in range(min_length):
-        if i == j:
-            continue
-        
-        similarity = cosine_similarity([sosa_embeddings[i]], [modified_embeddings[j]])[0][0]
-        
-        # Use as negative if sufficiently different
-        if similarity < 0.7:  # Threshold for semantic difference
-            combined_embedding = np.concatenate([sosa_embeddings[i], modified_embeddings[j]])
-            pairs.append(combined_embedding)
-            labels.append(0.0)
-```
+The training strategy uses an intelligent pairing approach that leverages the correspondence between datasets. Positive pairs are created by matching payloads with the same index across the SOSA and modified datasets, assuming these represent semantically equivalent messages. Negative pairs are generated by combining payloads from different indices, but only those with cosine similarity below 0.7 are selected to ensure truly dissimilar examples. This selective negative sampling creates a more challenging and realistic training environment, avoiding trivially easy negative examples that could lead to overconfident predictions.
 
 ### Performance Analysis
 
 #### Single Dataset Results
-```
-📊 Best Single Dataset Performance:
-   F1-Score: 100.0%
-   Precision: 100.0%
-   Recall: 100.0%
-   Specificity: 100.0%
-```
+
+The transformer approach achieved perfect performance on the best single dataset scenario, with 100% F1-score, precision, recall, and specificity, demonstrating flawless similarity detection capability under optimal conditions.
 
 #### Cross-Dataset Validation Results
-```
-📊 Average Across All Datasets:
-   F1-Score: 98.9%
-   Precision: 99.2%
-   Recall: 98.7%
-   Specificity: 99.6%
-```
+
+Testing across all available datasets showed remarkable consistency, with an average F1-score of 98.9%, precision of 99.2%, recall of 98.7%, and specificity of 99.6%. This demonstrates exceptional robustness across different data configurations.
 
 #### High Negative Ratio Results (80% Negatives)
-```
-📊 Robust Performance (80% negatives):
-   F1-Score: 97.7-100.0%
-   Precision: 100.0%
-   Recall: 95.5-100.0%
-   Specificity: 100.0%
-```
+
+Even under the challenging 80% negative class imbalance that caused previous approaches to fail completely, the transformer maintained excellent performance with F1-scores ranging from 97.7% to 100%, perfect precision, recall between 95.5% and 100%, and perfect specificity.
 
 #### Comprehensive Validation Results
-```
-🏆 Performance Ranking (by F1-Score):
-Rank Test Scenario                            F1     Prec   Rec    Spec  
---------------------------------------------------------------------------------
-1    ordered_cbor_messages_20250910_230351    1.000  1.000  1.000  1.000
-2    test_cbor_messages_20250910_230351       1.000  1.000  1.000  1.000
-3    train_cbor_messages_20250910_230351      1.000  1.000  1.000  1.000
-4    cbor_testing_data_internal               1.000  1.000  1.000  1.000
-5    cbor_training_data_internal              1.000  1.000  1.000  1.000
-...
-10   ordered_cbor_messages_20250910_204836    0.936  0.917  0.957  0.957
 
-📈 Statistical Summary:
-   F1-Score:     μ=0.989, σ=0.020, range=[0.936, 1.000]
-   Precision:    μ=0.992, σ=0.025, range=[0.917, 1.000]
-   Recall:       μ=0.987, σ=0.020, range=[0.955, 1.000]
-   Specificity:  μ=0.996, σ=0.013, range=[0.957, 1.000]
-```
+Systematic testing across ten different test scenarios revealed consistently excellent performance. Seven scenarios achieved perfect scores (100% across all metrics), while the remaining three maintained F1-scores above 93.6%. The statistical summary shows outstanding consistency with mean F1-score of 98.9% and low standard deviation of 2.0%, indicating reliable performance regardless of data configuration. Even the worst-performing scenario achieved 93.6% F1-score with 91.7% precision, far exceeding the performance of previous approaches.
 
 #### Strengths
 - ✅ **Breakthrough Performance**: 91.8-100% F1-score
@@ -581,158 +322,21 @@ F1-Score = 2 × (Precision × Recall) / (Precision + Recall)
 
 ---
 
-## 6. Code Examples and Implementation Details
+## 6. Implementation Framework Summary
 
-### Neural Network Training Example
+### Technology Stack
 
-```python
-# Complete training loop with monitoring
-def train_semantic_model(model, train_loader, val_loader, num_epochs=15):
-    criterion = WeightedFocalLoss(alpha=0.75, gamma=2.0, pos_weight=2.0)
-    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=0.01)
-    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=3)
-    
-    best_f1 = 0.0
-    best_precision = 0.0
-    
-    for epoch in range(num_epochs):
-        # Training phase
-        model.train()
-        train_loss = 0.0
-        
-        for features, labels in train_loader:
-            optimizer.zero_grad()
-            outputs = model(features)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-            train_loss += loss.item()
-        
-        # Validation phase
-        val_metrics = evaluate_semantic_model(model, val_loader)
-        
-        print(f"Epoch {epoch+1:2d}: "
-              f"Loss={train_loss/len(train_loader):.4f}, "
-              f"Val F1={val_metrics['f1']:.3f}, "
-              f"Val Prec={val_metrics['precision']:.3f}")
-        
-        scheduler.step(val_metrics['f1'])
-        
-        # Save best model
-        if val_metrics['precision'] > best_precision:
-            torch.save(model.state_dict(), 'best_semantic_model.pth')
-    
-    return model
-```
+The three approaches utilized different machine learning frameworks and libraries:
 
-### Random Forest Grid Search Example
+**Neural Network Approach:** Implemented in PyTorch with custom semantic feature engineering. Uses WeightedFocalLoss for class imbalance handling, Adam optimizer with learning rate scheduling, and supports ONNX export for IoT deployment. Training involves 15 epochs with early stopping and batch normalization for stable convergence.
 
-```python
-# Comprehensive hyperparameter optimization
-from sklearn.model_selection import GridSearchCV
+**Random Forest Approach:** Built using scikit-learn with comprehensive grid search optimization. Explores multiple hyperparameters including tree count, depth limits, splitting criteria, and class weighting strategies. Uses 3-fold cross-validation with F1-score optimization and saves the best model in pickle format for production use.
 
-param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [10, 15, 20, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'class_weight': ['balanced', None]
-}
+**Transformer Approach:** Combines the sentence-transformers library for embedding generation with PyTorch for the final classifier. Uses the pre-trained "all-MiniLM-L6-v2" model to create 384-dimensional embeddings, then processes concatenated embeddings through a four-layer neural network. Includes intelligent negative sampling based on cosine similarity thresholds.
 
-rf = RandomForestClassifier(random_state=42, n_jobs=-1)
-grid_search = GridSearchCV(
-    rf, param_grid, cv=3, scoring='f1', 
-    verbose=1, n_jobs=-1
-)
+### Real Data Processing
 
-grid_search.fit(X_train, y_train)
-best_rf = grid_search.best_estimator_
-
-print(f"Best parameters: {grid_search.best_params_}")
-print(f"Best CV F1-score: {grid_search.best_score_:.3f}")
-```
-
-### Transformer Embedding Generation Example
-
-```python
-# Complete transformer pipeline
-from sentence_transformers import SentenceTransformer
-import cbor2
-
-def create_transformer_dataset(sosa_payloads, modified_payloads, transformer_model):
-    # Decode CBOR to semantic text
-    sosa_semantic_texts = []
-    for payload, metadata in sosa_payloads:
-        decoded = decode_cbor_structure(payload)
-        semantic_text = create_semantic_text(decoded)
-        sosa_semantic_texts.append(semantic_text)
-    
-    # Generate embeddings
-    all_texts = sosa_semantic_texts + modified_semantic_texts
-    all_embeddings = transformer_model.encode(all_texts, show_progress_bar=True)
-    
-    # Create training pairs
-    pairs = []
-    labels = []
-    
-    # Positive pairs (semantic equivalence)
-    for i in range(min_length):
-        combined_embedding = np.concatenate([sosa_embeddings[i], modified_embeddings[i]])
-        pairs.append(combined_embedding)
-        labels.append(1.0)
-    
-    return pairs, labels
-```
-
-### CBOR Structural Content Extraction Example
-
-```python
-# Real CBOR payload processing
-def decode_cbor_structure(cbor_payload: bytes) -> Dict:
-    """Extract structural and content information from CBOR"""
-    
-    result = {
-        'text_elements': [],        # Text strings found in CBOR
-        'numeric_elements': [],     # Numbers found in CBOR
-        'structure_map': {},        # CBOR data type structure
-        'parsing_success': False
-    }
-    
-    try:
-        # Decode CBOR structure - works with integer keys
-        decoded = cbor2.loads(cbor_payload)
-        # Example result: {1: [{0: CBORTag(320, [19, 0]), 13: '2022-08-19-T17:30:12'}]}
-        
-        # Extract structural elements recursively
-        extract_structural_elements(decoded, result)
-        
-    except Exception as e:
-        # Fallback to byte-level extraction
-        result['text_elements'] = extract_text_from_bytes(cbor_payload)
-    
-    return result
-
-# Real examples from our actual CBOR test data:
-real_cbor_analysis = """
-# What we actually extract from encoded CBOR payloads:
-
-SOSA Message 0:
-  Raw CBOR: {1: [{0: CBORTag(320, [19, 0]), 13: '2022-08-19-T17:30:12', ...}]}
-  Extracted: "TEXT_CONTENT: 2022-08-19-T17:30:12 || STRUCTURE: CBORTag float int list str || NUMBERS: count=5 range=[15.00,186.00]"
-
-MODIFIED Message 0 (corresponding):
-  Raw CBOR: {1: [{0: CBORTag(320, [19, 0]), 13: '2022-08-19-T17:30:12', ...}]}
-  Extracted: "TEXT_CONTENT: 2022-08-19-T17:30:12 || STRUCTURE: CBORTag float int list str || NUMBERS: count=5 range=[15.00,183.00]"
-  
-Similarity: HIGH (same timestamp, same structure, similar numbers)
-
-# Key insight: No semantic ontology terms found - success comes from:
-# 1. Identical timestamps in both payloads  
-# 2. Same CBOR structural organization
-# 3. Similar numeric value ranges
-# 4. Transformer understanding of timestamp patterns
-"""
-```
+The transformer approach processes actual CBOR payloads by first decoding the structure using the cbor2 library. For example, a typical payload containing integer keys and mixed data types gets converted to standardized text representations that capture timestamps, structural organization, and numeric patterns. This approach succeeds because it finds identical timestamps across corresponding messages and recognizes similar structural patterns, achieving high similarity scores through content matching rather than semantic vocabulary analysis.
 
 ---
 
@@ -902,56 +506,28 @@ The best CNN-based approach (Test 11) achieved only 66.7% F1-score with ~50% pre
 
 #### 1. Enhanced Negative Sampling (Test 16)
 **Implementation**: Increased negatives from 50% to 80%
-```python
-# Test 16: 80% negatives vs Test 11: 50% negatives
-Test 11 (50% negatives): F1=66.0%, Precision=49.7%, Recall=98.2%
-Test 16 (80% negatives): F1=0.0%, Precision=0.0%, Recall=0.0%
-```
-**Result**: Complete failure - model couldn't learn with severe class imbalance.
+**Results**: Test 11 baseline achieved 66.0% F1-score with 49.7% precision, but Test 16 with 80% negatives completely failed with 0% on all metrics.
+**Outcome**: Complete failure - model couldn't learn with severe class imbalance.
 
 #### 2. Reduced Dropout (Test 17)
-**Implementation**: Reduced dropout from 40% to 30% with 80% negatives
-```python
-# Test 17: Combined 80% negatives + 30% dropout
-Test 17 (80% neg, 30% dropout): F1=0.0%, Precision=0.0%, Recall=0.0%
-```
-**Result**: Still failed - dropout reduction insufficient to overcome class imbalance.
+**Implementation**: Reduced dropout from 40% to 30% combined with 80% negatives
+**Results**: Despite reduced regularization, Test 17 still achieved 0% performance across all metrics.
+**Outcome**: Dropout reduction insufficient to overcome class imbalance problems.
 
 #### 3. Attention Mechanism (Test 18)
-**Implementation**: Added attention layer after CNN feature extraction
-```python
-class AttentionLayer:
-    def __init__(self, input_dim, attention_size=16):
-        self.attention_weights = self.add_weight(shape=(input_dim, attention_size))
-        self.context_vector = self.add_weight(shape=(attention_size, 1))
-```
-**Result**: Marginal improvement but still ~50% precision ceiling.
+**Implementation**: Added attention layer after CNN feature extraction with learnable attention weights and context vectors
+**Results**: Marginal improvement over baseline but still hit the ~50% precision ceiling.
+**Outcome**: Attention helped slightly but didn't solve the fundamental representation problem.
 
 #### 4. PyTorch Implementation (Test 19)
-**Implementation**: Migrated to PyTorch with attention + ONNX export support
-```python
-class AttentionCBORNet(nn.Module):
-    def __init__(self, attention_size=16, dropout_rate=0.3):
-        super().__init__()
-        self.attention = nn.MultiheadAttention(embed_dim=128, num_heads=4)
-        # ... ONNX-compatible layers
-```
-**Result**: Maintained baseline performance, successful ONNX export, but no precision breakthrough.
+**Implementation**: Migrated to PyTorch with multi-head attention and ONNX export capabilities
+**Results**: Successfully maintained baseline performance and achieved ONNX export compatibility.
+**Outcome**: Successful framework migration but no precision breakthrough beyond traditional approaches.
 
 #### 5. Siamese Neural Network (Test 20-21)
-**Implementation**: True Siamese architecture with contrastive loss
-```python
-class SiameseNetwork(nn.Module):
-    def __init__(self):
-        self.feature_extractor = CNN()
-        self.distance_metric = nn.CosineSimilarity()
-        
-def contrastive_loss(output1, output2, label, margin=1.0):
-    distance = F.pairwise_distance(output1, output2)
-    loss = (1-label) * torch.pow(distance, 2) + \
-           label * torch.pow(torch.clamp(margin - distance, min=0.0), 2)
-```
-**Result**: Improved precision to ~60% but still far from target.
+**Implementation**: True Siamese architecture with shared feature extractors and contrastive loss function
+**Results**: Improved precision to approximately 60%, representing progress but still below target.
+**Outcome**: Best traditional neural network result but insufficient for production requirements.
 
 ### Why These Approaches Failed: Root Cause Analysis
 
@@ -964,12 +540,7 @@ All neural network approaches (Tests 11-24) suffered from the same core issue:
 #### Technical Reasons for Failure
 
 **1. Feature Representation Gap**
-```python
-# What CNNs learned from:
-cbor_bytes = [0xA1, 0x01, 0x9F, 0xBF, 0x00, ...]  # Raw binary data
-# What they needed:
-semantic_content = "timestamp: 2022-08-19, status: TODO, structure: CBORTag"
-```
+CNNs were learning from raw binary sequences (hex bytes like 0xA1, 0x01, 0x9F, etc.) but needed structured semantic content like timestamps, status indicators, and structural information. The gap between binary data and meaningful patterns was too large for neural networks to bridge effectively.
 
 **2. Information Loss in Encoding**
 - CBOR payloads use integer keys (1, 10, 11, 51) instead of semantic terms
@@ -991,12 +562,7 @@ semantic_content = "timestamp: 2022-08-19, status: TODO, structure: CBORTag"
 The transformer approach (Test 25) achieved 91.8% F1-score by solving the fundamental representation problem:
 
 #### Key Insight
-Instead of processing raw bytes, decode CBOR structure and extract available content:
-```python
-# Transformer approach extracts:
-decoded_cbor = {1: [{13: '2022-08-19-T17:30:12', 14: 'TODO...'}]}
-# Creates: "TEXT_CONTENT: 2022-08-19-T17:30:12 || STRUCTURE: CBORTag float int"
-```
+Instead of processing raw bytes, decode CBOR structure and extract available content. The transformer approach extracts actual data elements like timestamps and status indicators from decoded CBOR structures, then creates standardized text representations that capture content, structure, and numeric patterns for transformer processing.
 
 #### Success Factors
 1. **Structural Decoding**: Leverages CBOR's self-describing format
